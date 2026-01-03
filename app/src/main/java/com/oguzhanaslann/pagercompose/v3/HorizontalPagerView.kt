@@ -1,6 +1,8 @@
 package com.oguzhanaslann.pagercompose.v3
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,12 +31,20 @@ fun HorizontalPagerView() {
             modifier = Modifier.fillMaxSize(),
             state = state,
             pageSize = threePagesPerViewport,
-        ) {
+            snapPosition = SnapPosition.Center
+        ) {page ->
             PagerItem(
-                page = it,
+                page = page,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
+                    .then(
+                        if (state.currentPage == page) {
+                            Modifier.border(4.dp, Color.Black)
+                        } else {
+                            Modifier
+                        }
+                    )
             )
         }
     }
