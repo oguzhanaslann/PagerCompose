@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
@@ -29,13 +30,14 @@ fun HorizontalPagerView() {
             PagerItem(
                 page = it,
                 modifier = Modifier
-                    .fillMaxWidth()
-//                    .width(200.dp)
+//                    .fillMaxWidth()
+                    .width(200.dp)
                     .height(200.dp)
             )
         }
     }
 }
+
 
 
 @Preview
