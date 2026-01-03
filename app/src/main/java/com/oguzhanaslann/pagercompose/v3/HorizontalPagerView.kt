@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,25 +34,14 @@ fun HorizontalPagerView() {
         HorizontalPager(
             modifier = Modifier.fillMaxSize(),
             state = state,
-            pageSize = threePagesPerViewport,
-            contentPadding = PaddingValues(horizontal = 16.dp),
+            contentPadding = PaddingValues(horizontal = 36.dp),
         ) {page ->
             PagerItem(
                 page = page,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
+                    .fillMaxSize()
             )
         }
-    }
-}
-
-private val threePagesPerViewport = object : PageSize {
-    override fun Density.calculateMainAxisPageSize(
-        availableSpace: Int,
-        pageSpacing: Int
-    ): Int {
-        return (availableSpace - 2 * pageSpacing) / 3
     }
 }
 
