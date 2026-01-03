@@ -17,6 +17,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.PagerDefaults
 import androidx.compose.foundation.pager.PagerSnapDistance
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
@@ -73,22 +74,9 @@ fun HorizontalPagerView() {
             flingBehavior = fling,
             beyondViewportPageCount = 3
         ) { page ->
-            Box(
+            PagerItem(
+                page = page,
                 modifier = Modifier
-                    .background(
-                        listOf(
-                            Color.Gray,
-                            Color.Red,
-                            Color.Blue,
-                            Color.Green,
-                            Color.Yellow,
-                            Color.Magenta,
-                            Color.Cyan,
-                            Color.Black,
-                            Color.DarkGray,
-                            Color.LightGray
-                        ).get(page)
-                    )
                     .fillMaxWidth()
                     .height(200.dp)
                     .graphicsLayer {
@@ -106,15 +94,8 @@ fun HorizontalPagerView() {
                             stop = 1f,
                             fraction = 1f - pageOffset.coerceIn(0f, 1f)
                         )
-                    },
-            ) {
-                // Our page content
-                Text(
-                    text = "Page: $page",
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                )
-            }
+                    }
+            )
         }
 
         // scroll to page
@@ -142,6 +123,7 @@ fun HorizontalPagerView() {
         PagerIndicator(
             pagerState.pageCount,
             pagerState.currentPage,
+            dotSize = 8.dp,
             modifier = Modifier.padding(16.dp)
         )
 
@@ -150,30 +132,7 @@ fun HorizontalPagerView() {
     }
 }
 
-@Composable
-fun PagerIndicator(pageCount: Int, currentPageIndex: Int, modifier: Modifier = Modifier) {
-    Box(modifier = Modifier) {
-        Row(
-            modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 8.dp),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            repeat(pageCount) { iteration ->
-                val color = if (currentPageIndex == iteration) Color.DarkGray else Color.LightGray
-                Box(
-                    modifier = modifier
-                        .padding(2.dp)
-                        .clip(CircleShape)
-                        .background(color)
-                        .size(16.dp)
-                )
-            }
-        }
-    }
-}
+
 
 @Preview
 @Composable
