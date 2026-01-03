@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,31 +29,18 @@ fun HorizontalPagerView() {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        val state = rememberPagerState { 50 }
-        val fling = PagerDefaults.flingBehavior(
-            state = state,
-            pagerSnapDistance = PagerSnapDistance.atMost(3)
-        )
-
+        val state = rememberPagerState { 5 }
         HorizontalPager(
             modifier = Modifier.fillMaxSize(),
             state = state,
             pageSize = threePagesPerViewport,
-            snapPosition = SnapPosition.Center,
-            flingBehavior = fling
+            contentPadding = PaddingValues(horizontal = 16.dp),
         ) {page ->
             PagerItem(
                 page = page,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
-                    .then(
-                        if (state.currentPage == page) {
-                            Modifier.border(4.dp, Color.Black)
-                        } else {
-                            Modifier
-                        }
-                    )
             )
         }
     }
@@ -66,10 +54,6 @@ private val threePagesPerViewport = object : PageSize {
         return (availableSpace - 2 * pageSpacing) / 3
     }
 }
-
-
-
-
 
 @Preview
 @Composable
