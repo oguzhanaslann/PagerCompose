@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.PagerDefaults
+import androidx.compose.foundation.pager.PagerSnapDistance
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,7 +33,7 @@ fun HorizontalPagerView() {
             modifier = Modifier.fillMaxSize(),
             state = state,
             pageSize = threePagesPerViewport,
-            snapPosition = SnapPosition.Center
+            snapPosition = SnapPosition.Center,
         ) {page ->
             PagerItem(
                 page = page,
