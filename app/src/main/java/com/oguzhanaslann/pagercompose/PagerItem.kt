@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun PagerItem(
     page: Int,
+    title: String? = null,
     modifier: Modifier = Modifier
 ) {
 
@@ -44,7 +45,7 @@ fun PagerItem(
     ) {
         // Our page content
         Text(
-            text = "Page: $page",
+            text =  title ?: "Page: $page",
             modifier = Modifier
                 .align(Alignment.Center)
         )
