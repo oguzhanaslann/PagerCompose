@@ -28,7 +28,7 @@ fun HorizontalPagerView() {
         HorizontalPager(
             modifier = Modifier.fillMaxSize(),
             state = state,
-            pageSize = PageSize.Fixed(200.dp),
+            pageSize = threePagesPerViewport,
         ) {
             PagerItem(
                 page = it,
@@ -39,6 +39,16 @@ fun HorizontalPagerView() {
         }
     }
 }
+
+private val threePagesPerViewport = object : PageSize {
+    override fun Density.calculateMainAxisPageSize(
+        availableSpace: Int,
+        pageSpacing: Int
+    ): Int {
+        return (availableSpace - 2 * pageSpacing) / 3
+    }
+}
+
 
 
 
