@@ -70,44 +70,6 @@ fun HorizontalPagerView() {
     }
 }
 
-@Composable
-private fun BoxScope.ControlButtons(state: PagerState) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.BottomCenter),
-    ) {
-        val coroutineScope = rememberCoroutineScope()
-        IconButton(
-            onClick = {
-                coroutineScope.launch {
-                    state.animateScrollToPage(max(state.currentPage - 1, 0))
-                }
-            },
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = null
-            )
-        }
-
-        Spacer(modifier = Modifier.weight(1f))
-
-        IconButton(
-            onClick = {
-                coroutineScope.launch {
-                    state.animateScrollToPage(min(state.currentPage + 1, 3))
-                }
-            },
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                contentDescription = null
-            )
-        }
-    }
-}
-
 @Preview
 @Composable
 fun previewHorizontalPagerViewBeyondViewportPageCount() {
