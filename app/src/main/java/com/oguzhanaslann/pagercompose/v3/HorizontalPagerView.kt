@@ -29,11 +29,17 @@ fun HorizontalPagerView() {
             .background(Color.White)
     ) {
         val state = rememberPagerState { 50 }
+        val fling = PagerDefaults.flingBehavior(
+            state = state,
+            pagerSnapDistance = PagerSnapDistance.atMost(3)
+        )
+
         HorizontalPager(
             modifier = Modifier.fillMaxSize(),
             state = state,
             pageSize = threePagesPerViewport,
             snapPosition = SnapPosition.Center,
+            flingBehavior = fling
         ) {page ->
             PagerItem(
                 page = page,
