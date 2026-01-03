@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
@@ -34,16 +35,28 @@ fun HorizontalPagerView() {
         HorizontalPager(
             modifier = Modifier.fillMaxSize(),
             state = state,
-            contentPadding = PaddingValues(horizontal = 36.dp),
+            pageSpacing = (-16).dp,
+            pageSize = threePagesPerViewport,
         ) {page ->
             PagerItem(
                 page = page,
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
+                    .height(200.dp)
             )
         }
     }
 }
+
+private val threePagesPerViewport = object : PageSize {
+    override fun Density.calculateMainAxisPageSize(
+        availableSpace: Int,
+        pageSpacing: Int
+    ): Int {
+        return (availableSpace - 2 * pageSpacing) / 3
+    }
+}
+
 
 @Preview
 @Composable
