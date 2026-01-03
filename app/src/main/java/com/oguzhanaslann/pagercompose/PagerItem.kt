@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,8 +17,11 @@ fun PagerItem(
     modifier: Modifier = Modifier
 ) {
 
-    LaunchedEffect(Unit) {
-        Log.e("TAG", "PagerItem: creation ${System.currentTimeMillis()}")
+    DisposableEffect (Unit) {
+        Log.e("TAG", "PagerItem: $page created.")
+        onDispose {
+            Log.e("TAG", "PagerItem: $page disposed.")
+        }
     }
 
     Box(
@@ -34,8 +38,8 @@ fun PagerItem(
                     Color.Blue,
                     Color.DarkGray,
                     Color.LightGray
-                ).get(page)
-                    .copy(alpha = 0.75f)
+                ).get(page % 10)
+                    .copy(alpha = 0.66f)
             ),
     ) {
         // Our page content
