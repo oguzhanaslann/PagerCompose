@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import com.oguzhanaslann.pagercompose.PagerItem
 import kotlin.math.absoluteValue
+import kotlin.math.max
 
 @Composable
 fun HorizontalPagerView() {
@@ -46,15 +47,17 @@ fun HorizontalPagerView() {
             snapPosition = SnapPosition.Center,
             pageSize = threePagesPerViewport,
         ) {page ->
+
+            val pageOffset = state.getOffsetDistanceInPages(page).absoluteValue
             PagerItem(
                 page = page,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp)
+                    .height(200.dp * max(1 - pageOffset, 0.5f))
                     .graphicsLayer {
                         // Calculate the signed offset for the current page from the
                         // scroll position.
-                        animateRadially(state, page, density)
+//                        animateRadially(state, page, density)
                     }
             )
         }
