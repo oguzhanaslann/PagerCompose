@@ -1,8 +1,10 @@
 package com.oguzhanaslann.pagercompose.v4
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -10,6 +12,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -26,11 +29,12 @@ fun HorizontalPagerView() {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        var pages by remember { mutableStateOf<List<String>>(emptyList()) }
-        val state = rememberPagerState(pageCount = pages::size)
+        var beyondPageCount by remember { mutableIntStateOf(1) }
+        val state = rememberPagerState(pageCount = { 50 })
         HorizontalPager(
             modifier = Modifier.fillMaxSize(),
             state = state,
+            beyondViewportPageCount = beyondPageCount
         ) { page ->
             PagerItem(
                 page = page,
@@ -39,18 +43,18 @@ fun HorizontalPagerView() {
             )
         }
 
-
-        Button(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            onClick = {
-                pages = pages
-                    .toMutableList()
-                    .apply {
-                        add("New Page: ${pages.size + 1}")
-                    }
-            }
+        FlowRow(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
         ) {
-            Text("Add Page")
+            repeat(3) { count ->
+                Button(onClick = {
+                    beyondPageCount = count + 1 * count + 1
+                    Log.d("TAG", "beyondViewportPageCount set to ${count + 1 * count + 1}")
+                }) {
+                    Text("Beyond Page Count: ${count + 1 * count + 1}")
+                }
+            }
         }
     }
 }

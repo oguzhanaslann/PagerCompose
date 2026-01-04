@@ -1,4 +1,4 @@
-package com.oguzhanaslann.pagercompose.v5
+package com.oguzhanaslann.pagercompose.v6
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
