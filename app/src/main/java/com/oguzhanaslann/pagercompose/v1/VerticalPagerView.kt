@@ -7,17 +7,16 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.oguzhanaslann.pagercompose.PagerItem
+import com.oguzhanaslann.pagercompose.R
 import kotlinx.coroutines.launch
 import kotlin.math.max
 import kotlin.math.min
@@ -50,7 +49,7 @@ fun VerticalPagerView() {
                 },
             ) {
                 Icon(
-                    imageVector = Icons.Default.KeyboardArrowUp,
+                    painter = painterResource(R.drawable.outline_arrow_upward_24),
                     contentDescription = null
                 )
             }
@@ -65,7 +64,7 @@ fun VerticalPagerView() {
                 },
             ) {
                 Icon(
-                    imageVector = Icons.Default.KeyboardArrowDown,
+                    painter = painterResource(R.drawable.outline_arrow_downward_24),
                     contentDescription = null
                 )
             }

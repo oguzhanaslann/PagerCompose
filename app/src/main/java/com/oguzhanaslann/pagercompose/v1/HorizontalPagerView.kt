@@ -9,17 +9,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.oguzhanaslann.pagercompose.PagerItem
+import com.oguzhanaslann.pagercompose.R
 import kotlinx.coroutines.launch
 import kotlin.math.max
 import kotlin.math.min
@@ -58,7 +57,7 @@ private fun BoxScope.ControlButtons(state: PagerState) {
             },
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                painter = painterResource(R.drawable.baseline_arrow_back_24),
                 contentDescription = null
             )
         }
@@ -73,7 +72,7 @@ private fun BoxScope.ControlButtons(state: PagerState) {
             },
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                painter = painterResource(R.drawable.outline_arrow_forward_24),
                 contentDescription = null
             )
         }
