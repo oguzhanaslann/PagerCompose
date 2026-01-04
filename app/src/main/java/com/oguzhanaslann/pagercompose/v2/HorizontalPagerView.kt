@@ -50,6 +50,6 @@ fun HorizontalPagerView() {
 
 @Preview
 @Composable
-fun previewHorizontalPagerView() {
+fun previewHorizontalPagerViewV2() {
     HorizontalPagerView()
 }
