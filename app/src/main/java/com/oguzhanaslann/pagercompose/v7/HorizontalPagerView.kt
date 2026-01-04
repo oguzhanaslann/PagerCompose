@@ -48,16 +48,14 @@ fun HorizontalPagerView() {
             pageSize = threePagesPerViewport,
         ) {page ->
 
-            val pageOffset = state.getOffsetDistanceInPages(page).absoluteValue
             PagerItem(
                 page = page,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp * max(1 - pageOffset, 0.5f))
                     .graphicsLayer {
                         // Calculate the signed offset for the current page from the
                         // scroll position.
-//                        animateRadially(state, page, density)
+                        animateRadially(state, page, density)
                     }
             )
         }
