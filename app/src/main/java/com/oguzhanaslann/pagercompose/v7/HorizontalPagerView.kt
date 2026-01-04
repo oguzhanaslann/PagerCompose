@@ -52,6 +52,7 @@ fun HorizontalPagerView() {
                 page = page,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(200.dp)
                     .graphicsLayer {
                         // Calculate the signed offset for the current page from the
                         // scroll position.
