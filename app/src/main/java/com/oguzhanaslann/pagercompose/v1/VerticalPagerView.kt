@@ -74,6 +74,6 @@ fun VerticalPagerView() {
 
 @Preview
 @Composable
-fun previewVerticalPagerView() {
+fun previewVerticalPagerViewV1() {
     VerticalPagerView()
 }

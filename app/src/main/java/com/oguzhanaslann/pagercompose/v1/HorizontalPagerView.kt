@@ -81,6 +81,6 @@ private fun BoxScope.ControlButtons(state: PagerState) {
 
 @Preview
 @Composable
-fun previewHorizontalPagerView() {
+fun previewHorizontalPagerViewV1() {
     HorizontalPagerView()
 }
